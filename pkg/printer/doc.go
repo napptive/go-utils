@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Napptive
+ * Copyright 2022 Napptive
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,6 @@
  * limitations under the License.
  */
 
-package main
-
-import (
-	"github.com/napptive/go-template/cmd/pummy/commands"
-)
-
-// Version of the command
-var Version string
-
-// Commit from which the command was built
-var Commit string
-
-func main() {
-	commands.Execute(Version, Commit)
-}
+// Package printer defines a set of CLI focused printers to show the results of an
+// operation in different formats.
+package printer

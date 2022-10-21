@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Napptive
+ * Copyright 2022 Napptive
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,5 @@
  * limitations under the License.
  */
 
-package config
-
-import (
-	"testing"
-
-	"github.com/onsi/ginkgo"
-	"github.com/onsi/gomega"
-)
-
-func TestConfigPackage(t *testing.T) {
-	gomega.RegisterFailHandler(ginkgo.Fail)
-	ginkgo.RunSpecs(t, "Config package suite")
-}
-
+// Package cli contains helper methods to create CLI commands.
+package cli

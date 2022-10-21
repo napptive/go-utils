@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Napptive
+ * Copyright 2022 Napptive
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,30 +14,16 @@
  * limitations under the License.
  */
 
-package commands
+package validation
 
 import (
-	"github.com/napptive/go-template/internal/app/dummy"
-	"github.com/spf13/cobra"
+	"testing"
+
+	"github.com/onsi/ginkgo"
+	"github.com/onsi/gomega"
 )
 
-var runCmdLongHelp = "Launch the Dummy service"
-var runCmdShortHelp = "Lauch the service"
-var runCmdExample = `$ dummy run`
-var runCmdUse = "run"
-
-var runCmd = &cobra.Command{
-	Use:     runCmdUse,
-	Long:    runCmdLongHelp,
-	Example: runCmdExample,
-	Short:   runCmdShortHelp,
-	Run: func(cmd *cobra.Command, args []string) {
-		cfg.Debug = debugLevel
-		s := dummy.NewService(cfg)
-		s.Run()
-	},
-}
-
-func init() {
-	rootCmd.AddCommand(runCmd)
+func TestValidationPackage(t *testing.T) {
+	gomega.RegisterFailHandler(ginkgo.Fail)
+	ginkgo.RunSpecs(t, "pkg/validation/ package suite")
 }

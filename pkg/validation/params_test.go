@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Napptive
+ * Copyright 2022 Napptive
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package main
+
+package validation
 
 import (
-	"github.com/napptive/go-template/cmd/dummy/commands"
+	"github.com/onsi/ginkgo"
+	"github.com/onsi/gomega"
 )
 
-// Version of the command
-var Version string
+var _ = ginkgo.Describe("Param validation tests", func() {
 
-// Commit from which the command was built
-var Commit string
+	ginkgo.It("should fail on empty", func() {
+		gomega.Expect(CheckNotEmpty("", "name")).To(gomega.HaveOccurred())
+	})
 
-func main() {
-	commands.Execute(Version, Commit)
-}
+	ginkgo.It("should fail on zero", func() {
+		gomega.Expect(CheckPositive(0, "name")).To(gomega.HaveOccurred())
+	})
+
+	ginkgo.It("should fail on negative values", func() {
+		gomega.Expect(CheckPositive(-1, "name")).To(gomega.HaveOccurred())
+	})
+
+})
