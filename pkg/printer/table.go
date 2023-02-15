@@ -96,7 +96,7 @@ func (tp *TablePrinter) CapitalizeWord(word string) string {
 }
 
 // AddTemplateFunction adds a new function so that it can be called in the golang template.
-func (tp *TablePrinter) AddTemplateFunction(name string, f func()) {
+func (tp *TablePrinter) AddTemplateFunction(name string, f interface{}) {
 	tp.extraTemplateFunctions[name] = f
 }
 
