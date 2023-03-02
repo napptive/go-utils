@@ -58,6 +58,7 @@ func NewTablePrinter() (ResultPrinter, error) {
 	extraFunctions["fromTimestampUint"] = printer.fromTimestampUint
 	extraFunctions["fromProtoTimestampToDate"] = printer.fromProtoTimestampToDate
 	extraFunctions["capitalize"] = printer.CapitalizeWord
+	extraFunctions["fromProtoTimestampToUTCTime"] = printer.fromProtoTimestampToUTCTime
 	printer.extraTemplateFunctions = extraFunctions
 	return printer, nil
 }
@@ -88,6 +89,11 @@ func (tp *TablePrinter) fromTimestampUint(timestamp uint64) string {
 // fromProtoTimestampToDate transforms a proto timestamp into a date
 func (tp *TablePrinter) fromProtoTimestampToDate(timestamp *timestamppb.Timestamp) string {
 	return timestamp.AsTime().Format("2006-01-02")
+}
+
+// fromProtoTimestampToUTCTime transforms a proto timestamp into a timestamp
+func (tp *TablePrinter) fromProtoTimestampToUTCTime(timestamp *timestamppb.Timestamp) string {
+	return timestamp.AsTime().UTC().String()
 }
 
 // CapitalizeWord sets as upper case the first letters of a word
